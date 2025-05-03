@@ -1,0 +1,486 @@
+/* ========= Базовая ========= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Segoe UI','Noto Sans',sans-serif;
+    background: #fffefc;
+    color: #2e2e2e;
+    line-height: 1.6;
+    scroll-behavior: smooth;
+    position: relative;
+  }
+  
+  /* ===== Цвета & переменные ===== */
+  :root {
+    --gold: #d4af37;
+    --light-gold: #f7e9b9;
+    --white: #ffffff;
+    --soft-gray: #f6f6f6;
+    --text-dark: #2b2b2b;
+    --shadow: rgba(0,0,0,0.08);
+    --pattern: url('data:image/svg+xml;utf8,\
+  <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80">\
+  <path d="M40 0 L80 0 L80 40" fill="none" stroke="%23d4af37" stroke-width="2"/>\
+  </svg>');
+  }
+  
+  /* ===== Header ===== */
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 3rem;
+    background: var(--white);
+    box-shadow: 0 4px 14px var(--shadow);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    animation: slideDown 0.8s ease-out;
+  }
+  
+  /* Логотип */
+  .logo {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+  .logo img {
+    height: 60px;
+    width: auto;
+    object-fit: contain;
+  }
+  @keyframes pulse {
+    0%,100% { transform: scale(1) rotate(-5deg); }
+    50%    { transform: scale(1.1) rotate(-5deg); }
+  }
+  .logo:hover img {
+    animation: pulse 1s infinite;
+  }
+  
+  /* ===== Навигация ===== */
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+  .nav-links li {
+    list-style: none;
+  }
+  .nav-links li a {
+    text-decoration: none;
+    font-weight: 500;
+    color: var(--text-dark);
+    position: relative;
+    padding: 0.5rem 0.75rem;
+    border-radius: 6px;
+    transition: background 0.4s, color 0.4s;
+  }
+  .nav-links li a:hover {
+    color: white;
+    background: linear-gradient(135deg, var(--gold), var(--light-gold));
+    box-shadow: 0 4px 12px var(--shadow);
+  }
+  .nav-links li a.active {
+    color: var(--gold);
+  }
+  .nav-links li a.active::before {
+    content: "";
+    position: absolute;
+    left: 0; right: 0; bottom: -6px;
+    height: 4px;
+    background: linear-gradient(135deg, var(--gold), var(--light-gold));
+    border-radius: 2px;
+  }
+  
+  /* ===== Burger ===== */
+  .burger {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    cursor: pointer;
+  }
+  .burger div {
+    width: 25px;
+    height: 3px;
+    background: #333;
+    transition: all 0.3s;
+  }
+  .burger.toggle .line1 { transform: rotate(45deg) translateY(8px); }
+  .burger.toggle .line2 { opacity: 0; }
+  .burger.toggle .line3 { transform: rotate(-45deg) translateY(-8px); }
+  
+  /* ===== Hero ===== */
+  .hero {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    padding: 2rem;
+    text-align: center;
+    background:
+      linear-gradient(rgba(10, 10, 10, 0.6), rgba(0,0,0,0.6)),
+      url('images/dombyra-hero.png') center/cover fixed;
+  }
+  .hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--pattern) repeat;
+    opacity: 0.1;
+  }
+  .hero blockquote {
+    position: relative;
+    z-index: 1;
+    max-width: 900px;
+    font-size: clamp(1.8rem, 2.5vw, 3rem);
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1.4;
+    padding: 1rem 2rem;
+    background: rgba(255,255,255,0.2);
+    border-left: 6px solid var(--gold);
+    box-shadow: 0 4px 14px var(--shadow);
+    backdrop-filter: blur(4px);
+    animation: fadeInUp 1.5s ease-out;
+  }
+  .hero .scroll-down {
+    position: absolute;
+    bottom: 20px; left: 50%;
+    transform: translateX(-50%);
+    width: 24px; height: 40px;
+    border: 2px solid var(--gold);
+    border-radius: 12px;
+    box-sizing: content-box;
+  }
+  .hero .scroll-down::after {
+    content: "";
+    display: block;
+    margin: 6px auto;
+    width: 4px; height: 4px;
+    background: var(--gold);
+    border-radius: 50%;
+    animation: scrollDot 2s infinite;
+  }
+  
+  /* ===== Quote + Image ===== */
+  .quote-image {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    padding: 4rem 2rem;
+    background: var(--white);
+    position: relative; overflow: hidden;
+  }
+  .quote-image::before,
+  .quote-image::after {
+    content: "";
+    position: absolute; top: 0; bottom: 0; width: 50px;
+    background: var(--pattern) repeat-y;
+  }
+  .quote-image::before { left: 0; }
+  .quote-image::after {
+    right: 0; transform: rotate(180deg);
+  }
+  .quote-text {
+    flex: 1;
+    font-size: 1.2rem;
+    color: var(--text-dark);
+    animation: fadeIn 1s ease-out;
+  }
+  .quote-text .author {
+    margin-top: 1rem;
+    color: var(--gold);
+    font-style: italic;
+  }
+  .dombyra-img img {
+    max-width: 100%; max-height: 320px;
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  /* ===== Description ===== */
+  .description {
+    padding: 4rem 2rem;
+    background: var(--soft-gray);
+    text-align: center;
+    transition: background 0.3s;
+  }
+  .description:hover { background: var(--white); }
+  .description p {
+    max-width: 700px; margin: 0 auto 2rem; color: #444;
+  }
+  .description button {
+    padding: 0.9rem 1.8rem;
+    background: var(--gold); color: white;
+    border: none; border-radius: 10px;
+    font-weight: 600;
+    box-shadow: 0 4px 14px var(--shadow);
+    transition: transform 0.3s;
+    cursor: pointer;
+  }
+  .description button:hover {
+    transform: translateY(-3px);
+  }
+  
+  /* ===== Extra ===== */
+  .extra {
+    padding: 4rem 2rem; background: var(--white); text-align: center;
+  }
+  .extra-content h2 {
+    font-size: 1.8rem;
+    background: linear-gradient(to right, var(--gold), #fddf5a);
+    background-clip: text; -webkit-background-clip: text;
+    color: transparent;
+  }
+  .extra-content p {
+    max-width: 650px; margin: 1rem auto; color: #555;
+  }
+  
+  /* ===== Инструменты (Аспаптар) ===== */
+  .instruments {
+    padding: 4rem 2rem; background: #fffefc; text-align: center;
+  }
+  .instruments h2 {
+    font-size: 2.2rem; margin-bottom: 1rem;
+    background: linear-gradient(to right, var(--gold), #fddf5a);
+    background-clip: text; -webkit-background-clip: text;
+    color: transparent;
+  }
+  .instruments p.intro {
+    max-width: 700px; margin: 0 auto 2.5rem;
+    font-size: 1.1rem; color: var(--text-dark);
+  }
+  .cards {
+    display: grid; gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+    margin-top: 2rem;
+  }
+  .card {
+    background: var(--white);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 14px var(--shadow);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 20px var(--shadow);
+  }
+  .card img {
+    width: 100%; height: 180px; object-fit: cover;
+  }
+  .card-content {
+    padding: 1.5rem; text-align: left;
+  }
+  .card-content h3 {
+    font-size: 1.4rem; margin-bottom: 0.5rem; color: var(--gold);
+  }
+  .card-content p {
+    font-size: 1rem; color: #444; line-height: 1.5;
+  }
+  
+  /* ===== Домбыра үйрену ===== */
+  .learn {
+    padding: 4rem 2rem; background: #fffefc;
+  }
+  .learn h2 {
+    font-size: 2.2rem; text-align: center; margin-bottom: 1rem;
+    background: linear-gradient(to right, var(--gold), #fddf5a);
+    background-clip: text; -webkit-background-clip: text;
+    color: transparent;
+  }
+  .video-wrapper {
+    max-width: 800px; margin: 0 auto 3rem;
+    position: relative; padding-bottom: 56.25%; height: 0;
+    box-shadow: 0 4px 14px var(--shadow);
+  }
+  .video-wrapper iframe {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  }
+  .steps {
+    max-width: 800px; margin: 0 auto 3rem;
+  }
+  .step {
+    border-bottom: 1px solid var(--soft-gray);
+  }
+  .step button {
+    width: 100%; text-align: left; padding: 1rem;
+    font-size: 1.1rem; background: var(--white); border: none;
+    outline: none; cursor: pointer; transition: background 0.3s;
+    display: flex; justify-content: space-between;
+  }
+  .step button:hover {
+    background: var(--soft-gray);
+  }
+  .step-content {
+    max-height: 0; overflow: hidden;
+    transition: max-height 0.3s ease;
+    padding: 0 1rem; background: var(--soft-gray);
+  }
+  
+  /* ===== Табуляция ===== */
+  .tabs {
+    max-width: 800px; margin: 0 auto 3rem;
+  }
+  .tab-buttons {
+    display: flex; gap: 1rem; margin-bottom: 1rem;
+  }
+  .tab-buttons button {
+    flex: 1; padding: 0.75rem; background: var(--soft-gray);
+    border: none; cursor: pointer; transition: background 0.3s;
+  }
+  .tab-buttons button.active {
+    background: var(--gold); color: white;
+  }
+  .tab-content {
+    padding: 1rem; background: var(--white);
+    box-shadow: 0 4px 14px var(--shadow);
+  }
+  
+  /* ===== Кнопка практики ===== */
+  .practice {
+    text-align: center; margin-top: 2rem;
+  }
+  .practice a {
+    display: inline-block; padding: 0.9rem 1.8rem;
+    background: var(--gold); color: white; border-radius: 10px;
+    text-decoration: none; box-shadow: 0 4px 14px var(--shadow);
+    transition: transform 0.3s;
+  }
+  .practice a:hover {
+    transform: translateY(-3px);
+  }
+  
+  /* ===== Күйлер тарихы ===== */
+  .history {
+    padding: 4rem 2rem; background: #fffefc;
+  }
+  .history h2 {
+    font-size: 2.4rem; text-align: center; margin-bottom: 1rem;
+    background: linear-gradient(to right, var(--gold), #fddf5a);
+    -webkit-background-clip: text; background-clip: text;
+    color: transparent;
+  }
+  .history p.intro {
+    max-width: 800px; margin: 0 auto 3rem;
+    font-size: 1.1rem; color: var(--text-dark);
+    text-align: center; line-height: 1.6;
+  }
+  /* Timeline */
+  .timeline {
+    position: relative; margin: 2rem 0; padding-left: 2rem;
+    border-left: 3px solid var(--gold);
+  }
+  .timeline .event {
+    position: relative; margin-bottom: 2rem;
+    opacity: 0; transform: translateX(-40px);
+    animation: slideIn 0.8s forwards;
+  }
+  .timeline .event:nth-child(1) { animation-delay: 0.2s; }
+  .timeline .event:nth-child(2) { animation-delay: 0.4s; }
+  .timeline .event:nth-child(3) { animation-delay: 0.6s; }
+  .timeline .event::before {
+    content: "";
+    position: absolute; left: -25px; top: 5px;
+    width: 16px; height: 16px;
+    background: var(--white);
+    border: 3px solid var(--gold);
+    border-radius: 50%;
+  }
+  .timeline .event h3 {
+    font-size: 1.3rem; margin-bottom: 0.25rem; color: var(--gold);
+  }
+  .timeline .event p {
+    margin: 0; font-size: 1rem; color: #444; line-height: 1.5;
+  }
+  
+  /* ===== Masters ===== */
+  .masters {
+    padding: 4rem 2rem; background: var(--soft-gray); text-align: center;
+  }
+  .masters h2 {
+    font-size: 2.2rem; margin-bottom: 2rem;
+    background: linear-gradient(to right, var(--gold), #fddf5a);
+    -webkit-background-clip: text; background-clip: text;
+    color: transparent;
+  }
+  .master-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+    gap: 2rem;
+  }
+  .master-card {
+    background: var(--white); border-radius: 12px;
+    overflow: hidden; box-shadow: 0 4px 14px var(--shadow);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .master-card:hover {
+    transform: translateY(-6px); box-shadow: 0 8px 20px var(--shadow);
+  }
+  .master-card img {
+    width: 100%; height: 200px; object-fit: cover;
+  }
+  .master-info {
+    padding: 1.5rem; text-align: left;
+  }
+  .master-info h4 {
+    font-size: 1.3rem; margin-bottom: 0.5rem; color: var(--gold);
+  }
+  .master-info p {
+    font-size: 0.95rem; color: #555; line-height: 1.5;
+  }
+  
+  /* ===== Parallax block ===== */
+  .parallax {
+    position: relative;
+    height: 50vh; /* высота блока — 50% от окна браузера */
+    background: url('https://static.vecteezy.com/system/resources/thumbnails/012/634/759/small_2x/art-deco-outline-stroke-in-golden-color-for-classy-and-luxury-style-premium-vintage-line-art-design-element-free-png.png') center/cover fixed;
+    margin: 4rem 0;
+  }
+  
+  .parallax::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    /* полупрозрачный оверлей, чтобы фон был чуть приглушён */
+    background: rgba(255,255,255,0.2);
+  }
+  
+  /* ===== Анимации ===== */
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateX(-40px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+  
+  @keyframes float { 0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)} }
+  @keyframes fadeInUp { from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)} }
+  @keyframes fadeIn   { from{opacity:0}to{opacity:1} }
+  @keyframes slideDown{ from{transform:translateY(-100%)}to{transform:translateY(0)} }
+  @keyframes scrollDot{0%,100%{transform:translateY(0)}50%{transform:translateY(8px)}}
+  
+  /* ===== Адаптив ===== */
+  @media (max-width: 900px) {
+    header { padding: 1rem 2rem; }
+    .nav-links {
+      display: none; position: absolute; top: 70px; right: 2rem;
+      background: var(--white); flex-direction: column;
+      gap: 1.5rem; padding: 1rem; border-radius: 10px;
+      box-shadow: 0 5px 20px var(--shadow);
+    }
+    .nav-links.active { display: flex; }
+    .burger { display: flex; }
+    .hero blockquote { font-size: 2rem; padding: 1rem; }
+    .quote-image { flex-direction: column; }
+    .instruments h2 { font-size: 1.8rem; }
+    .card img { height: 140px; }
+    .history p.intro { font-size: 1rem; padding: 0 1rem; }
+    .timeline { padding-left: 1rem; }
+    .timeline .event h3 { font-size: 1.1rem; }
+    .masters h2 { font-size: 2rem; }
+    .master-card img { height: 150px; }
+  }
+  

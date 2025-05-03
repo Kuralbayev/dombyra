@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Домбыра үйрену — Домбыра</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <div class="logo" onclick="location.href='index.html'">
+      <img src="images/Dombyra-logo.jpg" alt="Логотип Домбыра">
+    </div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index.html">Басты бет</a></li>
+        <li><a href="aspaptar.html">Аспаптар</a></li>
+        <li><a href="tarikh.html">Күйлер тарихы</a></li>
+        <li><a href="uirenu.html" class="active">Домбыра үйрену</a></li>
+      </ul>
+      <div class="burger">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+      </div>
+    </nav>
+  </header>
+
+  <section class="learn">
+    <h2>Домбыра үйренудің алғашқы қадамдары</h2>
+    <!-- Видео -->
+    <div class="video-wrapper">
+      <iframe src="https://www.youtube.com/embed/VIDEO_ID" frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen></iframe>
+    </div>
+
+    <!-- Аккордеон шаги -->
+    <div class="steps">
+      <div class="step">
+        <button>1. Домбыраны ұстап ойнауды үйрену 
+          <span>▾</span>
+        </button>
+        <div class="step-content">
+          <p>Сапалы поза, домбыраны тік ұстау, оң және сол қол қозғалысын қалыптастыру.</p>
+        </div>
+      </div>
+      <div class="step">
+        <button>2. Әуелгі қағыстар (ритм) 
+          <span>▾</span>
+        </button>
+        <div class="step-content">
+          <p>Негізгі ритмдік қағыстар: «дөк-дөк», «дөк-тэк», біркелкі қағыстар.</p>
+        </div>
+      </div>
+      <div class="step">
+        <button>3. Қарапайым күйді орындау 
+          <span>▾</span>
+        </button>
+        <div class="step-content">
+          <p>«Балбырауын» немесе «Қараторғай» күйінің алғашқы тактыларын үйрену.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Табуляция -->
+    <div class="tabs">
+      <div class="tab-buttons">
+        <button class="active" data-tab="chords">Негізгі аккордтар</button>
+        <button data-tab="melodies">Қарапайым мелодиялар</button>
+      </div>
+      <div id="chords" class="tab-content">
+        <ul>
+          <li>Аккорд C: 0–2–3–2 (меңгілген жолдар бойынша)</li>
+          <li>Аккорд G: 3–0–0–0</li>
+          <li>Аккорд D: 2–0–2–0</li>
+        </ul>
+      </div>
+      <div id="melodies" class="tab-content" style="display:none;">
+        <ul>
+          <li>«Балбырауын» алғашқы төрт нота: C–D–E–G</li>
+          <li>«Қараторғай» мотиві: G–E–D–C</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Кнопка практики -->
+    <div class="practice">
+      <a href="#aspaptar">Жаттығуға өту</a>
+    </div>
+  </section>
+  <script src="script.js"></script>
+</body>
+</html>
