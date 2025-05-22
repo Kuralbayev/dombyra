@@ -94,6 +94,43 @@
     background: linear-gradient(135deg, var(--gold), var(--light-gold));
     border-radius: 2px;
   }
+  /* Dropdown Style */
+  .nav-links .dropdown {
+    position: relative;
+  }
+
+  .nav-links .dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 160px;
+    z-index: 1000;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    top: 130%;
+    left: 0;
+  }
+
+  .nav-links .dropdown-menu li {
+    list-style: none;
+  }
+
+  .nav-links .dropdown-menu li a {
+    display: block;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #333;
+    white-space: nowrap;
+  }
+
+  .nav-links .dropdown-menu li a:hover {
+    background-color: #f0f0f0;
+  }
+
+  /* Show menu on hover */
+  .nav-links .dropdown:hover .dropdown-menu {
+    display: block;
+  }
   
   /* ===== Burger ===== */
   .burger {
@@ -281,6 +318,9 @@
   }
   .card-content p {
     font-size: 1rem; color: #444; line-height: 1.5;
+  }
+  .card-link {
+    text-decoration: none;
   }
   
   /* ===== Домбыра үйрену ===== */
@@ -484,3 +524,135 @@
     .master-card img { height: 150px; }
   }
   
+  /* ===== Стили для страницы dombyra-tarikhy.html ===== */
+
+.instrument-history {
+  padding: 3rem 2rem;
+  background-color: var(--soft-gray);
+  color: var(--text-dark);
+  max-width: 1000px;
+  margin: 0 auto;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.instrument-history h1 {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  background: linear-gradient(to right, var(--gold), #f7d774);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.instrument-history section {
+  margin-bottom: 3rem;
+  background-color: var(--white);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px var(--shadow);
+}
+
+.instrument-history h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: var(--main-color);
+  border-left: 4px solid var(--gold);
+  padding-left: 0.8rem;
+}
+
+.instrument-history p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  text-align: justify;
+}
+
+.famous-players ul {
+  list-style-type: disc;
+  padding-left: 2rem;
+}
+
+.famous-players li {
+  margin-bottom: 1rem;
+  font-size: 1.05rem;
+}
+
+@media (max-width: 768px) {
+  .instrument-history {
+    padding: 2rem 1rem;
+  }
+
+  .instrument-history h1 {
+    font-size: 2rem;
+  }
+
+  .instrument-history h2 {
+    font-size: 1.5rem;
+  }
+
+  .instrument-history p,
+  .famous-players li {
+    font-size: 1rem;
+  }
+}
+
+.instrument-history {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.instrument-history h1 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+.instrument-history h2 {
+  font-size: 28px;
+  margin-top: 30px;
+}
+
+.instrument-history p,
+.instrument-history ul {
+  font-size: 18px;
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+.instrument-history ul {
+  padding-left: 20px;
+}
+
+.instrument-history li {
+  margin-bottom: 10px;
+}
+
+.instrument-history {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.instrument-history h1 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+.instrument-history h2 {
+  font-size: 28px;
+  margin-top: 30px;
+}
+
+.instrument-history p,
+.instrument-history ul {
+  font-size: 18px;
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+.instrument-history ul {
+  padding-left: 20px;
+}
+
+.instrument-history li {
+  margin-bottom: 10px;
+}
